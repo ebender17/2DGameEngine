@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "WorkingDirectory.h"
 
 class Game
 {
@@ -12,5 +13,10 @@ public:
 
 private:
 	Window window;
+
+	WorkingDirectory workingDir;
+
+	sf::Texture emilyTexture;
+	sf::Sprite emilySprite;
 };
 

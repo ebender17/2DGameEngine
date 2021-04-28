@@ -162,10 +162,15 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WorkingDirectory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WorkingDirectory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="EmilyPokemonSprite.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
