@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "WorkingDirectory.h"
+#include "Input.h"
 
 class Game
 {
@@ -13,6 +14,8 @@ public:
 
 	void CalculateDeltaTime(); 
 
+	void CaptureInput();
+
 private:
 	Window window;
 
@@ -20,6 +23,8 @@ private:
 
 	sf::Clock clock;
 	float deltaTime;
+
+	Input input;
 
 
 	sf::Texture emilyTexture;
