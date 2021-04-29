@@ -4,41 +4,36 @@ Game::Game()
 {
 	deltaTime = clock.restart().asSeconds();
 
-	emilyTexture.loadFromFile(workingDir.Get() + "EmilyPokemonSprite.png"); 
-	emilySprite.setTexture(emilyTexture);
+	std::shared_ptr<SceneTitleScreen> titleScreen =
+		std::make_shared<SceneTitleScreen>(workingDir,
+			sceneStateMachine,
+			window); 
+
+	std::shared_ptr<SceneGame> gameScene =
+		std::make_shared<SceneGame>(workingDir);
+
+	unsigned int titleScreenID = sceneStateMachine.Add(titleScreen); 
+	unsigned int gameSceneID = sceneStateMachine.Add(gameScene);
+
+	titleScreen->SetSwitchToScene(gameSceneID); 
+
+	sceneStateMachine.SwitchTo(titleScreenID);
+
+	deltaTime = clock.restart().asSeconds();
+
 }
 
-void Game::Update() 
+void Game::Update()
 {
 	window.Update();
 
-	const sf::Vector2f& spritePos = emilySprite.getPosition(); 
-	const int moveSpeed = 100;
+	sceneStateMachine.Update(deltaTime);
 
-	int xMove = 0;
-	if (input.IsKeyPressed(Input::Key::Left))
-		xMove = -moveSpeed;
-	else if (input.IsKeyPressed(Input::Key::Right))
-		xMove = moveSpeed;
-
-	int yMove = 0;
-	if (input.IsKeyPressed(Input::Key::Up))
-	{
-		yMove = -moveSpeed;
-	}
-	else if (input.IsKeyPressed(Input::Key::Down))
-	{
-		yMove = moveSpeed;
-	}
-
-	float xFrameMove = xMove * deltaTime; 
-	float yFrameMove = yMove * deltaTime;
-
-	emilySprite.setPosition(spritePos.x + xFrameMove, spritePos.y + yFrameMove);
 }
 
 void Game::LateUpdate()
 {
+	sceneStateMachine.LateUpdate(deltaTime);
 
 }
 
@@ -46,7 +41,7 @@ void Game::Draw()
 {
 	window.BeginDraw();
 
-	window.Draw(emilySprite);
+	sceneStateMachine.Draw(window);
 
 	window.EndDraw();
 }
@@ -63,6 +58,6 @@ void Game::CalculateDeltaTime()
 
 void Game::CaptureInput()
 {
-	input.Update();
+	sceneStateMachine.ProcessInput();
 }
 

@@ -14,6 +14,8 @@ public:
 
 	bool IsOpen() const;
 
+	sf::Vector2u GetCenter() const;
+
 private:
 	sf::RenderWindow window;
 };

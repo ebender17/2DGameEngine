@@ -2,6 +2,9 @@
 #include "Window.h"
 #include "WorkingDirectory.h"
 #include "Input.h"
+#include "SceneStateMachine.h"
+#include "SceneTitleScreen.h"
+#include "SceneGame.h"
 
 class Game
 {
@@ -24,10 +27,7 @@ private:
 	sf::Clock clock;
 	float deltaTime;
 
-	Input input;
+	SceneStateMachine sceneStateMachine;
 
-
-	sf::Texture emilyTexture;
-	sf::Sprite emilySprite;
 };
 
