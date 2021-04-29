@@ -1,8 +1,11 @@
 #pragma once
 
+#include <iostream>
 #include "Scene.h"
 #include "Input.h"
 #include "WorkingDirectory.h"
+#include "Object.h"
+#include "C_SpriteRenderer.h"
 
 class SceneGame : public Scene
 {
@@ -17,10 +20,9 @@ public:
     void Draw(Window& window) override;
 
 private:
-    sf::Texture emilyTexture;
-    sf::Sprite emilySprite;
-
     WorkingDirectory& workingDir;
     Input input;
+
+    std::shared_ptr<Object> player;
 };
 
