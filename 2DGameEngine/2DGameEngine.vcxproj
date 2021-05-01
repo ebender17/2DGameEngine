@@ -160,7 +160,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bitmask.cpp" />
+    <ClCompile Include="C_InputHandler.cpp" />
     <ClCompile Include="C_SpriteRenderer.cpp" />
+    <ClCompile Include="C_Transform.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -174,7 +176,9 @@
   <ItemGroup>
     <ClInclude Include="Bitmask.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="C_InputHandler.h" />
     <ClInclude Include="C_SpriteRenderer.h" />
+    <ClInclude Include="C_Transform.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Object.h" />

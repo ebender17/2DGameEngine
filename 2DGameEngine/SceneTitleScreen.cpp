@@ -46,6 +46,7 @@ void SceneTitleScreen::Update(float deltaTime)
 		sceneStateMachine.SwitchTo(switchToState);
 }
 
+
 void SceneTitleScreen::Draw(Window& window)
 {
 	window.Draw(titleSprite);

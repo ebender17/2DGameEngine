@@ -1,5 +1,10 @@
 #include "Object.h"
 
+Object::Object()
+{
+	transform = AddComponent<C_Transform>();
+}
+
 //Loop through our components in reverse order as the component vector
 //can be changed in our update or draw calls with components adding/removing
 //other components.

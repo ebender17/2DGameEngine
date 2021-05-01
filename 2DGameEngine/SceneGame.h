@@ -6,6 +6,7 @@
 #include "WorkingDirectory.h"
 #include "Object.h"
 #include "C_SpriteRenderer.h"
+#include "C_InputHandler.h"
 
 class SceneGame : public Scene
 {
@@ -17,6 +18,7 @@ public:
 
     void ProcessInput() override;
     void Update(float deltaTime) override;
+    void LateUpdate(float deltaTime) override;
     void Draw(Window& window) override;
 
 private:

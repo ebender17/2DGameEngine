@@ -16,6 +16,14 @@ void SceneGame::OnCreate()
         sprite->Load(workingDir.Get() + "EmilyPokemonSprite.png");
     else
         std::cout << "Sprite Renderer component not added" << std::endl;
+
+    auto movement = player->AddComponent<C_InputHandler>();
+
+    if (movement)
+        movement->SetInput(&input);
+    else
+        std::cout << "Input Handler component not added" << std::endl;
+
 }
 
 void SceneGame::OnDestroy()
@@ -29,7 +37,12 @@ void SceneGame::ProcessInput()
 
 void SceneGame::Update(float deltaTime)
 {
-    
+    player->Update(deltaTime);
+}
+
+void SceneGame::LateUpdate(float deltaTime)
+{
+    player->LateUpdate(deltaTime);
 }
 
 void SceneGame::Draw(Window& window)

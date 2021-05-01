@@ -4,10 +4,16 @@
 
 #include "Window.h"
 #include "Component.h"
+#include "C_Transform.h"
 
+/// <summary>
+/// Class for all objects in the game. All objects have a transform component.
+/// </summary>
 class Object
 {
-public: 
+public:
+	Object();
+
 	//Awake is called when object is created. Use to ensure
 	//required components are present.
 	void Awake();
@@ -65,7 +71,10 @@ public:
 		return nullptr;
 	}
 
-private: 
+public: 
+	std::shared_ptr<C_Transform> transform;
+
+private:
 	std::vector<std::shared_ptr<Component>> components;
 
 };

@@ -4,6 +4,7 @@
 
 #include "SceneStateMachine.h"
 #include "WorkingDirectory.h"
+#include "C_InputHandler.h"
 
 class SceneTitleScreen : public Scene
 {
