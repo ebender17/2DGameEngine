@@ -8,6 +8,7 @@
 #include "C_SpriteRenderer.h"
 #include "C_InputHandler.h"
 #include "ResourceAllocator.h"
+#include "ObjectCollection.h"
 
 class SceneGame : public Scene
 {
@@ -26,7 +27,7 @@ private:
     WorkingDirectory& workingDir;
     Input input;
     ResourceAllocator<sf::Texture>& textureAllocator;
+    ObjectCollection objects;
 
-    std::shared_ptr<Object> player;
 };
 

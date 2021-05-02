@@ -7,16 +7,14 @@ SceneGame::SceneGame(WorkingDirectory& workingDir, ResourceAllocator<sf::Texture
 
 void SceneGame::OnCreate()
 {
-    player = std::make_shared<Object>();
+    std::shared_ptr<Object> player = std::make_shared<Object>();
 
-
+    //Add player components
     auto sprite = player->AddComponent<C_SpriteRenderer>();
-    
     if (sprite)
     {
         sprite->SetTextureAllocator(&textureAllocator);
-        sprite->Load(workingDir.Get() + "EmilyPokemonSprite.png");
-        
+        sprite->Load(workingDir.Get() + "EmilyPokemonSprite.png");   
     }
     else
     {
@@ -31,6 +29,9 @@ void SceneGame::OnCreate()
     else
         std::cout << "Input Handler component not added" << std::endl;
 
+    //Add player to object collection
+    objects.Add(player);
+
 }
 
 void SceneGame::OnDestroy()
@@ -44,15 +45,19 @@ void SceneGame::ProcessInput()
 
 void SceneGame::Update(float deltaTime)
 {
-    player->Update(deltaTime);
+    objects.ProcessRemovals();
+    //Process new objects at the beginning of each frame.
+    objects.ProcessNewObjects();
+
+    objects.Update(deltaTime);
 }
 
 void SceneGame::LateUpdate(float deltaTime)
 {
-    player->LateUpdate(deltaTime);
+    objects.LateUpdate(deltaTime);
 }
 
 void SceneGame::Draw(Window& window)
 {
-    player->Draw(window);
+    objects.Draw(window);
 }

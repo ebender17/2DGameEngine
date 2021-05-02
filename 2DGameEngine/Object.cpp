@@ -1,6 +1,6 @@
 #include "Object.h"
 
-Object::Object()
+Object::Object() : queuedForRemoval(false)
 {
 	transform = AddComponent<C_Transform>();
 }
@@ -49,4 +49,14 @@ void Object::Draw(Window& window)
 	{
 		components[i]->Draw(window);
 	}
+}
+
+bool Object::IsQueuedForRemoval()
+{
+	return queuedForRemoval;
+}
+
+void Object::QueueForRemoval()
+{
+	queuedForRemoval = true;
 }

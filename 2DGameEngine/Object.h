@@ -26,6 +26,9 @@ public:
 	void LateUpdate(float deltaTime);
 	void Draw(Window& window);
 
+	bool IsQueuedForRemoval();
+	void QueueForRemoval();
+
 	template <typename T> 
 	std::shared_ptr<T> AddComponent()
 	{
@@ -76,6 +79,9 @@ public:
 
 private:
 	std::vector<std::shared_ptr<Component>> components;
+
+	//Flag used to determine if object should be removed from object collection
+	bool queuedForRemoval; 
 
 };
 
