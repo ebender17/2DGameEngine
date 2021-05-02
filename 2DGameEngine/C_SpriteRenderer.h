@@ -1,13 +1,18 @@
 #pragma once
 
 #include "Component.h"
+#include "ResourceAllocator.h"
 
 class C_SpriteRenderer : public Component
 {
 public: 
 	C_SpriteRenderer(Object* owner); 
 
-	//Loads sprite from file
+	void SetTextureAllocator(ResourceAllocator<sf::Texture>* allocator);
+
+	//Loads sprite from already existing resource
+	void Load(int id);
+	//Loads sprite from file and adds texture to resource allocator
 	void Load(const std::string& filePath); 
 
 	//We override the draw method so we can draw our sprite.
@@ -17,7 +22,7 @@ public:
 	void LateUpdate(float deltaTime) override;
 
 private:
-	sf::Texture texture;
+	ResourceAllocator < sf::Texture>* allocator;
 	sf::Sprite sprite;
 };
 

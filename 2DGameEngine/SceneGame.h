@@ -7,11 +7,12 @@
 #include "Object.h"
 #include "C_SpriteRenderer.h"
 #include "C_InputHandler.h"
+#include "ResourceAllocator.h"
 
 class SceneGame : public Scene
 {
 public: 
-	SceneGame(WorkingDirectory& workingDir);
+    SceneGame(WorkingDirectory& workingDir, ResourceAllocator<sf::Texture>& textureAllocator);
 
     void OnCreate() override;
     void OnDestroy() override;
@@ -24,6 +25,7 @@ public:
 private:
     WorkingDirectory& workingDir;
     Input input;
+    ResourceAllocator<sf::Texture>& textureAllocator;
 
     std::shared_ptr<Object> player;
 };

@@ -29,5 +29,7 @@ private:
 
 	SceneStateMachine sceneStateMachine;
 
+	ResourceAllocator<sf::Texture> texureAllocator;
+
 };
 

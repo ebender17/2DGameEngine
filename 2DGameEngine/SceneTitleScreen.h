@@ -5,12 +5,14 @@
 #include "SceneStateMachine.h"
 #include "WorkingDirectory.h"
 #include "C_InputHandler.h"
+#include "ResourceAllocator.h"
 
 class SceneTitleScreen : public Scene
 {
 public:
 	SceneTitleScreen(WorkingDirectory& workingDir,
-		SceneStateMachine& sceneStateMachine, Window& window);
+		SceneStateMachine& sceneStateMachine, Window& window, 
+		ResourceAllocator<sf::Texture>& textureAllocator);
 
 	void OnCreate() override;
 	void OnDestroy() override;
@@ -23,12 +25,12 @@ public:
 	void Draw(Window& window) override;
 
 private:
-	sf::Texture titleTexture;
 	sf::Sprite titleSprite;
 
 	WorkingDirectory& workingDir;
 	SceneStateMachine& sceneStateMachine;
 	Window& window;
+	ResourceAllocator<sf::Texture>& textureAllocator;
 
 	//We want to show this scene for a set amount of time
 	float showForSeconds;

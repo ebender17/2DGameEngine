@@ -1,7 +1,7 @@
 #include "SceneGame.h"
 
-SceneGame::SceneGame(WorkingDirectory& workingDir)
-	: workingDir(workingDir)
+SceneGame::SceneGame(WorkingDirectory& workingDir, ResourceAllocator<sf::Texture>& textureAllocator)
+	: workingDir(workingDir), textureAllocator(textureAllocator)
 {
 }
 
@@ -13,9 +13,16 @@ void SceneGame::OnCreate()
     auto sprite = player->AddComponent<C_SpriteRenderer>();
     
     if (sprite)
+    {
+        sprite->SetTextureAllocator(&textureAllocator);
         sprite->Load(workingDir.Get() + "EmilyPokemonSprite.png");
+        
+    }
     else
+    {
         std::cout << "Sprite Renderer component not added" << std::endl;
+    }
+        
 
     auto movement = player->AddComponent<C_InputHandler>();
 

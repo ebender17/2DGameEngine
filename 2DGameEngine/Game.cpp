@@ -7,10 +7,10 @@ Game::Game()
 	std::shared_ptr<SceneTitleScreen> titleScreen =
 		std::make_shared<SceneTitleScreen>(workingDir,
 			sceneStateMachine,
-			window); 
+			window, texureAllocator); 
 
 	std::shared_ptr<SceneGame> gameScene =
-		std::make_shared<SceneGame>(workingDir);
+		std::make_shared<SceneGame>(workingDir, texureAllocator);
 
 	unsigned int titleScreenID = sceneStateMachine.Add(titleScreen); 
 	unsigned int gameSceneID = sceneStateMachine.Add(gameScene);

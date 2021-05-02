@@ -167,6 +167,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ResourceAllocator.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneStateMachine.cpp" />
     <ClCompile Include="SceneTitleScreen.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ResourceAllocator.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneStateMachine.h" />
